@@ -23,9 +23,9 @@ resource "null_resource" "wait-dependencies" {
 
 resource "helm_release" "fluentd" {
   depends_on = ["null_resource.wait-dependencies", "null_resource.dependency_getter"]
-  name = "fluentd"
+  name = "fluentd-operator"
   repository = "artifactory"
-  chart = "fluentd"
+  chart = "fluentd-operator"
   version = "${var.chart_version}"
   namespace = "${var.helm_namespace}"
   timeout = 1200
