@@ -31,7 +31,7 @@ resource "helm_release" "fluentd" {
   timeout = 1200
 
   values = [
-    "${file("${path.module}/values/fluentd.yaml")}",
+    "${file("${path.module}/values/fluentd-operator.yaml")}",
   ]
 
 }
