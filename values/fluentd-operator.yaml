@@ -1,2 +1,5 @@
+image:
+  pullSecret: artifactory-prod
+
 rbac:
   create: yes
