@@ -6,3 +6,8 @@ variable "chart_version" {}
 variable "dependencies" {
   type = "list"
 }
+
+variable "values" {
+  default = ""
+  type = "string"
+}
