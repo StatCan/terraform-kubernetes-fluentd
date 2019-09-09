@@ -1,8 +1,8 @@
-# Terraform Kubernetes AAD Pod Identity
+# Terraform Kubernetes Fluentd
 
 ## Introduction
 
-This module deploys and configures Fluentd on Kubernetes into a Kubernetes Cluster.
+This module deploys and configures Fluentd inside a Kubernetes Cluster.
 
 ## Security Controls
 
