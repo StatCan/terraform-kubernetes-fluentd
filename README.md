@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This module deploys and configures Elastic Cloud on Kubernetes into a Kubernetes Cluster.
+This module deploys and configures Fluentd on Kubernetes into a Kubernetes Cluster.
 
 ## Security Controls
 
