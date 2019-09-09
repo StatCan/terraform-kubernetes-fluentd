@@ -17,7 +17,7 @@ The following security controls can be met through configuration of this templat
 ## Usage
 
 ```terraform
-module "kubectl_eck" {
+module "helm_fluentd" {
   source = "github.com/canada-ca-terraform-modules/terraform-kubernetes-fluentd?ref=20190909.1"
 
   chart_version = "0.0.2"
