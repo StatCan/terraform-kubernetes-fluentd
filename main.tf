@@ -17,6 +17,16 @@ resource "null_resource" "dependency_getter" {
   }
 }
 
+resource "null_resource" "wait-dependencies" {
+  provisioner "local-exec" {
+    command = "helm ls --tiller-namespace ${var.helm_namespace}"
+  }
+
+  depends_on = [
+    "null_resource.dependency_getter",
+  ]
+}
+
 resource "helm_release" "fluentd" {
   depends_on = ["null_resource.wait-dependencies", "null_resource.dependency_getter"]
   name       = "fluentd-operator"
