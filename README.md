@@ -22,13 +22,8 @@ The following security controls can be met through configuration of this templat
 
 ```terraform
 module "helm_fluentd" {
-<<<<<<< HEAD
   source = "git::https://github.com/canada-ca-terraform-modules/terraform-kubernetes-fluentd.git?ref=v2.0.0"
   
-=======
-  source = "github.com/canada-ca-terraform-modules/terraform-kubernetes-fluentd?ref=20190909.1"
-
->>>>>>> origin/master
   chart_version = "0.0.2"
   dependencies = [
     "${module.namespace_monitoring.depended_on}",
