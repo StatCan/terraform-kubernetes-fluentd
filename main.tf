@@ -18,7 +18,7 @@ resource "null_resource" "dependency_getter" {
 }
 
 resource "helm_release" "fluentd" {
-  depends_on = ["null_resource.wait-dependencies", "null_resource.dependency_getter"]
+  depends_on = ["null_resource.dependency_getter"]
   name       = "fluentd-operator"
   repository = "${var.helm_repository}"
   chart      = "fluentd-operator"
