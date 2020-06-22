@@ -22,8 +22,8 @@ The following security controls can be met through configuration of this templat
 
 ```terraform
 module "helm_fluentd" {
-  source = "github.com/canada-ca-terraform-modules/terraform-kubernetes-fluentd?ref=20190909.1"
-
+  source = "git::https://github.com/canada-ca-terraform-modules/terraform-kubernetes-fluentd.git?ref=v2.0.0"
+  
   chart_version = "0.0.2"
   dependencies = [
     "${module.namespace_monitoring.depended_on}",
@@ -55,3 +55,4 @@ EOF
 | -------- | ---------- | ---------------------------------------------------------- |
 | 20190729 | 20190729.1 | Improvements to documentation and formatting               |
 | 20190909 | 20190909.1 | 1st release                                                |
+| 20200620 | v2.0.0     | Module now modified for Helm 3                             |
