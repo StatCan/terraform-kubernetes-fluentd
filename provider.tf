@@ -1,5 +1,5 @@
 terraform {
   required_providers {
-      version = ">= 1.0.0"
+      helm = ">= 1.0.0"
   }
 }
