@@ -17,23 +17,17 @@ resource "null_resource" "dependency_getter" {
   }
 }
 
-resource "null_resource" "wait-dependencies" {
-  provisioner "local-exec" {
-    command = "helm ls --tiller-namespace ${var.helm_namespace}"
-  }
-
-  depends_on = [
-    "null_resource.dependency_getter",
-  ]
-}
-
 resource "helm_release" "fluentd" {
   depends_on = ["null_resource.dependency_getter"]
   name       = "fluentd-operator"
-  repository = "${var.helm_repository}"
+
+  repository = var.helm_repository
+  repository_username = var.helm_repository_username
+  repository_password = var.helm_repository_password
+
   chart      = "fluentd-operator"
-  version    = "${var.chart_version}"
-  namespace  = "${var.helm_namespace}"
+  version    = var.chart_version
+  namespace  = var.helm_namespace
   timeout    = 1200
 
   values = [
