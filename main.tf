@@ -7,7 +7,7 @@
 # module:
 resource "null_resource" "dependency_getter" {
   triggers = {
-    my_dependencies = "${join(",", var.dependencies)}"
+    my_dependencies = join(",", var.dependencies)
   }
 
   lifecycle {
@@ -18,20 +18,20 @@ resource "null_resource" "dependency_getter" {
 }
 
 resource "helm_release" "fluentd" {
-  depends_on = ["null_resource.dependency_getter"]
+  depends_on = [null_resource.dependency_getter]
   name       = "fluentd-operator"
 
-  repository = var.helm_repository
+  repository          = var.helm_repository
   repository_username = var.helm_repository_username
   repository_password = var.helm_repository_password
 
-  chart      = "fluentd-operator"
-  version    = var.chart_version
-  namespace  = var.helm_namespace
-  timeout    = 1200
+  chart     = "fluentd-operator"
+  version   = var.chart_version
+  namespace = var.helm_namespace
+  timeout   = 1200
 
   values = [
-    "${var.values}",
+    var.values,
   ]
 
 }
@@ -43,6 +43,6 @@ resource "null_resource" "dependency_setter" {
   # https://github.com/hashicorp/terraform/issues/1178#issuecomment-449158607
   # List resource(s) that will be constructed last within the module.
   depends_on = [
-    "helm_release.fluentd"
+    helm_release.fluentd
   ]
 }
