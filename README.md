@@ -26,7 +26,7 @@ module "helm_fluentd" {
   
   chart_version = "0.0.2"
   dependencies = [
-    "${module.namespace_monitoring.depended_on}",
+    module.namespace_monitoring.depended_on,
   ]
 
   helm_namespace  = "monitoring"
