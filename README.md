@@ -22,14 +22,14 @@ The following security controls can be met through configuration of this templat
 
 ```terraform
 module "helm_fluentd" {
-  source = "git::https://github.com/canada-ca-terraform-modules/terraform-kubernetes-fluentd.git?ref=v2.0.0"
+  source = "git::https://github.com/canada-ca-terraform-modules/terraform-kubernetes-fluentd.git?ref=v3.0.0"
   
   chart_version = "0.0.2"
-  dependencies = [
-    module.namespace_monitoring.depended_on,
+  depends_on = [
+    module.namespace_monitoring,
   ]
 
-  helm_namespace  = "monitoring"
+  helm_namespace  = module.namespace_monitoring.name
   helm_repository = "stable"
 
   values = <<EOF
@@ -42,7 +42,6 @@ EOF
 | Name                     | Type   | Required | Value                                                         |
 | ------------------------ | ------ | -------- | ------------------------------------------------------------- |
 | chart_version            | string | yes      | Version of the Helm Chart                                     |
-| dependencies             | string | yes      | Dependency name refering to namespace module                  |
 | helm_namespace           | string | yes      | The namespace Helm will install the chart under               |
 | helm_repository          | string | yes      | The repository where the Helm chart is stored                 |
 | helm_repository_username | string | no       | The username of the repository where the Helm chart is stored |
@@ -57,3 +56,4 @@ EOF
 | 20190909 | 20190909.1 | 1st release                                         |
 | 20200620 | v2.0.0     | Module now modified for Helm 3                      |
 | 20201013 | v2.0.1     | Add the ability to specify a username and password. |
+| 20210824 | v3.0.0     | Update module for Terraform v0.13                   |
