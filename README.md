@@ -22,7 +22,7 @@ The following security controls can be met through configuration of this templat
 
 ```terraform
 module "helm_fluentd" {
-  source = "git::https://github.com/canada-ca-terraform-modules/terraform-kubernetes-fluentd.git?ref=v3.0.0"
+  source = "git::https://github.com/canada-ca-terraform-modules/terraform-kubernetes-fluentd.git?ref=v3.0.1"
   
   chart_version = "0.0.2"
   depends_on = [
@@ -57,3 +57,4 @@ EOF
 | 20200620 | v2.0.0     | Module now modified for Helm 3                      |
 | 20201013 | v2.0.1     | Add the ability to specify a username and password. |
 | 20210824 | v3.0.0     | Update module for Terraform v0.13                   |
+| 20230202 | v3.0.1     | Specify sensitive variables                         |
